@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+
+  database:
+    container_name: titanic-database
+    image: postgres:12.1
+    ports:
+      - 5433:5432
+    volumes:
+      - titanic-database:/var/lib/postgresql/data
+
+  server:
+    build:
+      context: ./server
+    container_name: titanic-server
+    command: [ "bash", "start.sh" ]
+    depends_on:
+      - database
+    environment:
+      - PGDATABASE=titanic
+      - PGUSER=titanic
+      - PGPASSWORD=titanic
+      - PGHOST=titanic-database
+
+    ports:
+      - 8001:8000
+    volumes:
+      - ./server:/usr/src/app
+
+volumes:
+  titanic-database:
+      
