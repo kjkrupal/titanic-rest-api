@@ -3,9 +3,6 @@ from rest_framework.serializers import ModelSerializer, Serializer
 
 from .models import Passenger
 
-import logging
-logger = logging.getLogger(__name__)
-
 class PassengerSerializer(ModelSerializer):
     class Meta:
         model = Passenger
@@ -33,7 +30,6 @@ class PassengerCSVRowSerializer(Serializer):
 
     def create(self, validated_data):
         
-        logger.error(validated_data)
         passenger = Passenger()
         passenger.passenger_id = validated_data.get('PassengerId')
         passenger.survived = validated_data.get('Survived')
@@ -48,4 +44,3 @@ class PassengerCSVRowSerializer(Serializer):
         passenger.embarked = validated_data.get('Embarked')
         passenger.save()
         return passenger
-        #return Passenger.objects.create(**data)

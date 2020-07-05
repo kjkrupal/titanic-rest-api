@@ -11,9 +11,6 @@ from rest_framework.response import Response
 from .models import Passenger
 from .serializers import PassengerSerializer, PassengerFileUploadSerializer, PassengerCSVRowSerializer
 
-import logging
-logger = logging.getLogger(__name__)
-
 class PassengerViewSet(ModelViewSet):
     queryset = Passenger.objects.all()
     serializer_class = PassengerSerializer

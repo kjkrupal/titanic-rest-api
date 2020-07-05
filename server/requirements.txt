@@ -3,3 +3,4 @@ psycopg2-binary==2.8.5
 djangorestframework==3.11.0
 django-filter==2.3.0
 djangorestframework-csv==2.1.0
+django-cors-headers==3.4.0
